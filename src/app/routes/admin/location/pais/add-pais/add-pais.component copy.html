@@ -1,0 +1,87 @@
+<page-header class="bg-cyan-50" />
+<mat-card>
+  <mat-card-header class="m-b-16">
+    <mat-card-title>Agregar Nuevo País</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    @if (errorMessage) {
+      <div class="material-error-block" role="alert">
+        {{ errorMessage }}
+      </div>
+    }
+    <form [formGroup]="countryForm" class="form-field-full" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>ISO Code (2 letras)</mat-label>
+            <input matInput placeholder="Ej: CA" formControlName="iso" required minlength="2" maxlength="2">
+            @if (countryForm.get('iso')?.invalid && (countryForm.get('iso')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('iso') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>ISO3 Code (3 letras)</mat-label>
+            <input matInput placeholder="Ej: CAN" formControlName="iso3" minlength="3" maxlength="3">
+            @if (countryForm.get('iso3')?.invalid && (countryForm.get('iso3')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('iso3') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Ej: Canadá" formControlName="name" required>
+            @if (countryForm.get('name')?.invalid && (countryForm.get('name')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('name') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>Nombre Amigable</mat-label>
+            <input matInput placeholder="Ej: Canada" formControlName="niceName" required>
+            @if (countryForm.get('niceName')?.invalid && (countryForm.get('niceName')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('niceName') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>Código Numérico</mat-label>
+            <input matInput placeholder="Ej: 124" formControlName="numCode">
+            @if (countryForm.get('numCode')?.invalid && (countryForm.get('numCode')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('numCode') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>Código de Teléfono</mat-label>
+            <input matInput placeholder="Ej: 1" type="number" formControlName="phoneCode" required>
+            @if (countryForm.get('phoneCode')?.invalid && (countryForm.get('phoneCode')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('phoneCode') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <button
+        mat-stroked-button
+        type="button"
+        (click)="countryForm.reset()"
+        class="m-r-8"
+        [disabled]="countryForm.pristine">Limpiar</button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="countryForm.invalid">Guardar País</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

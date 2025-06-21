@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'styles/reboot';
+@use 'styles/themes';
+@use 'styles/colors';
+@use 'styles/grid';
+@use 'styles/helpers';
+@use 'styles/plugins';
+@use 'styles/custom';
+
+
+
+// /* ================================================== */
+// /* ELIMINA BORDES, FONDO GRIS Y EFECTOS DE ICONOS */
+// /* ================================================== */
+
+// /* 1. Elimina bordes y fondo en TODOS los iconos */
+// .mat-icon,
+// .mat-icon-button,
+// .material-icons,
+// [mat-icon-button],
+// [mat-icon],
+// .mat-mdc-icon-button {
+//   /* Elimina bordes y outlines */
+//   border: none !important;
+//   outline: none !important;
+//   box-shadow: none !important;
+
+//   /* Fondo transparente (elimina el gris) */
+//   background-color: transparent !important;
+
+//   /* Elimina efectos de hover/focus/active */
+//   &:hover, &:focus, &:active {
+//     border: none !important;
+//     outline: none !important;
+//     background-color: transparent !important;
+//     box-shadow: none !important;
+//   }
+
+//   /* Elimina pseudo-elementos (si aplica) */
+//   &::before, &::after {
+//     border: none !important;
+//     background-color: transparent !important;
+//   }
+// }
+
+// /* 2. Elimina fondo en imágenes usadas como iconos */
+// img[mat-icon-image],
+// .mat-icon-image {
+//   border: none !important;
+//   outline: none !important;
+//   background-color: transparent !important;
+// }
+
+// /* 3. Clase utilitaria para casos específicos (opcional) */
+// .icon-clean {
+//   border: none !important;
+//   outline: none !important;
+//   background-color: transparent !important;
+//   box-shadow: none !important;
+
+//   &:hover, &:focus, &:active {
+//     background-color: transparent !important;
+//   }
+// }

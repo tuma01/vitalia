@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .activate-message, .activate-error {
+      text-align: center;
+      // margin-bottom: 20px;
+  }
+  
+  .activate-error {
+      color: red;
+  }

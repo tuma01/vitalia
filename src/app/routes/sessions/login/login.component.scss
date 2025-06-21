@@ -1,0 +1,45 @@
+// .example-card {
+//   max-width: 400px;
+// }
+
+// .example-header-image {
+//   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+//   background-size: cover;
+// }
+
+.title_center {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-title {
+  &.centered-bold-title {
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+// /* Variación 1 */
+// .mat-mdc-snack-bar-container.danger {
+//   background-color: #f44336 !important;
+//   color: white !important;
+// }
+
+// /* Variación 2 (si la anterior no funciona) */
+// ::ng-deep .mat-snack-bar-container.danger {
+//   background-color: #f44336 !important;
+//   color: white !important;
+// }
+
+/* Variación 3 (para versiones más recientes con MDC) */
+::ng-deep .mat-mdc-snack-bar-container.danger {
+  --mdc-snackbar-container-color: #f44336 !important;
+  --mat-mdc-snack-bar-label-text-color: white !important; /* Para el texto */
+  --mat-mdc-snack-bar-button-color: white !important; /* Para el botón (si lo tienes) */
+}

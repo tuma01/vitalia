@@ -1,0 +1,103 @@
+<page-header class="bg-cyan-50" />
+<mat-card>
+  <mat-card-header class="m-b-16">
+    <mat-card-title>
+       @if (entityId) {
+          {{ 'common.edit' | translate }} {{ entityNameKey | translate }}
+       } @else {
+          {{ 'common.add' | translate }} {{ entityNameKey | translate }}
+       }
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    @if (errorMessage) {
+      <div class="material-error-block" role="alert">
+        {{ errorMessage }}
+      </div>
+    }
+    <form [formGroup]="form" class="form-field-full" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>{{ 'country.iso' | translate }}</mat-label>
+            <input matInput placeholder="Ej: CA" formControlName="iso" required minlength="2" maxlength="2">
+            @if (getControl('iso')?.invalid && (getControl('iso')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('iso') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+             <mat-label>{{ 'country.iso3' | translate }}</mat-label>
+            <input matInput placeholder="Ej: CAN" formControlName="iso3" minlength="3" maxlength="3">
+            @if (getControl('iso3')?.invalid && (getControl('iso3')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('iso3') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>{{ 'country.name' | translate }}</mat-label>
+            <input matInput placeholder="Ej: Canadá" formControlName="name" required>
+            @if (getControl('name')?.invalid && (getControl('name')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('name') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>{{ 'country.niceName' | translate }}</mat-label>
+            <input matInput placeholder="Ej: Canada" formControlName="niceName" required>
+            @if (getControl('niceName')?.invalid && (getControl('niceName')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('niceName') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>{{ 'country.numCode' | translate }}</mat-label>
+            <input matInput placeholder="Ej: 124" formControlName="numCode">
+            @if (getControl('numCode')?.invalid && (getControl('numCode')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('numCode') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>{{ 'country.phoneCode' | translate }}</mat-label>
+            <input matInput placeholder="Ej: 1" type="number" formControlName="phoneCode" required>
+            @if (getControl('phoneCode')?.invalid && (getControl('phoneCode')?.touched || submitted)) {
+              <mat-error>{{ getErrorMessage('phoneCode') }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <!-- <button
+          mat-stroked-button
+          type="button"
+          (click)="resetForm()"
+          class="m-r-8"
+          [disabled]="form.pristine"
+        >
+           {{ 'common.clear' | translate }}
+        </button> -->
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+           {{ 'common.save' | translate }} {{ entityNameKey | translate }}
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

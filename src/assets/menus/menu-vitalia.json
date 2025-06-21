@@ -1,0 +1,219 @@
+{
+  "menu": [
+    {
+      "route": "dashboard",
+      "name": "dashboard",
+      "type": "link",
+      "icon": "dashboard",
+      "badge": {
+        "color": "red-50",
+        "value": "5"
+      }
+    },
+    {
+      "route": "design",
+      "name": "design",
+      "type": "sub",
+      "icon": "color_lens",
+      "label": {
+        "color": "azure-50",
+        "value": "New"
+      },
+      "children": [
+        {
+          "route": "colors",
+          "name": "colors",
+          "type": "link",
+          "icon": "colorize"
+        },
+        {
+          "route": "icons",
+          "name": "icons",
+          "type": "link",
+          "icon": "flag"
+        }
+      ]
+    },
+    {
+      "route": "material",
+      "name": "material",
+      "type": "sub",
+      "icon": "favorite",
+      "children": [
+        {
+          "route": "autocomplete",
+          "name": "autocomplete",
+          "type": "link"
+        },
+        {
+          "route": "checkbox",
+          "name": "checkbox",
+          "type": "link"
+        },
+        {
+          "route": "datepicker",
+          "name": "datepicker",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "media",
+      "name": "media",
+      "type": "sub",
+      "icon": "image",
+      "children": [
+        {
+          "route": "gallery",
+          "name": "gallery",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "forms",
+      "name": "forms",
+      "type": "sub",
+      "icon": "description",
+      "children": [
+        {
+          "route": "elements",
+          "name": "form-elements",
+          "type": "link"
+        },
+        {
+          "route": "dynamic",
+          "name": "dynamic-form",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "tables",
+      "name": "tables",
+      "type": "sub",
+      "icon": "format_line_spacing",
+      "children": [
+        {
+          "route": "kitchen-sink",
+          "name": "kitchen-sink",
+          "type": "link"
+        },
+        {
+          "route": "remote-data",
+          "name": "remote-data",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "profile",
+      "name": "profile",
+      "type": "sub",
+      "icon": "person",
+      "children": [
+        {
+          "route": "overview",
+          "name": "overview",
+          "type": "link"
+        },
+        {
+          "route": "settings",
+          "name": "settings",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "https://ng-matero.github.io/extensions/",
+      "name": "extensions",
+      "type": "extTabLink",
+      "icon": "extension"
+    },
+    {
+      "route": "/",
+      "name": "sessions",
+      "type": "sub",
+      "icon": "question_answer",
+      "children": [
+        {
+          "route": "403",
+          "name": "403",
+          "type": "link"
+        },
+        {
+          "route": "404",
+          "name": "404",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "500",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "utilities",
+      "name": "utilities",
+      "type": "sub",
+      "icon": "all_inbox",
+      "children": [
+        {
+          "route": "css-grid",
+          "name": "css-grid",
+          "type": "link"
+        },
+        {
+          "route": "css-helpers",
+          "name": "css-helpers",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "menu-level",
+      "name": "menu-level",
+      "type": "sub",
+      "icon": "subject",
+      "children": [
+        {
+          "route": "level-1-1",
+          "name": "level-1-1",
+          "type": "sub",
+          "children": [
+            {
+              "route": "level-2-1",
+              "name": "level-2-1",
+              "type": "sub",
+              "children": [
+                {
+                  "route": "level-3-1",
+                  "name": "level-3-1",
+                  "type": "sub",
+                  "children": [
+                    {
+                      "route": "level-4-1",
+                      "name": "level-4-1",
+                      "type": "link"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "route": "level-2-2",
+              "name": "level-2-2",
+              "type": "link"
+            }
+          ]
+        },
+        {
+          "route": "level-1-2",
+          "name": "level-1-2",
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}

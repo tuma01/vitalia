@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+.material-error-block {
+  $warn-palette: mat.$red-palette;
+
+  // Mantienes el fondo y borde como están
+  $warn-color-background: map.get($warn-palette, 50); // Fondo rojo muy claro
+  $warn-color-border: map.get($warn-palette, 500);   // Borde rojo estándar
+
+  // *** CAMBIO AQUÍ: Usar color blanco directo ***
+  $warn-color-text: white; // O '#FFFFFF'
+  // $warn-color-text: map.get($warn-palette, 700); // Rojo un poco más oscuro para texto
+
+  border: 1px solid $warn-color-border;
+  background-color: $warn-color-background;
+  color: $warn-color-text; // Aplicar el color blanco
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}

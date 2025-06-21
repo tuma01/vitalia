@@ -1,0 +1,55 @@
+.matero-page-header {
+  display: block;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, .87);
+  background-color: #0074e9;
+  border-radius: var(--mat-sys-corner-medium);
+
+  .matero-breadcrumb {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+}
+
+.matero-page-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+
+
+
+.header-card {
+  padding: 16px; /* Ajusta según necesidad */
+  border-radius: 0 !important; /* Opcional: elimina bordes redondeados */
+  box-shadow: none !important; /* Opcional: elimina sombra si prefieres */
+}
+
+.header-container {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  width: 100%;
+}
+
+.left-section {
+  /* Fuerza alineación a la izquierda */
+  margin-right: auto;
+}
+
+.title {
+  margin: 0; /* Elimina margen por defecto de h2 */
+  font-size: 1.5rem;
+  color: #333; /* Color personalizable */
+}
+
+.spacer {
+  flex: 1; /* Ocupa todo el espacio disponible entre izquierda/derecha */
+  min-width: 16px; /* Espacio mínimo garantizado */
+}
+
+.right-section {
+  /* Fuerza alineación a la derecha */
+  margin-left: auto;
+}

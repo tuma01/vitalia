@@ -1,0 +1,3485 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI specification - vitalia-app",
+    "description": "This API exposes endpoints to manage Vitalia App",
+    "termsOfService": "https://www.vitalia.com/terms",
+    "contact": {
+      "name": "Juan Amachi",
+      "url": "https://www.amachi.com",
+      "email": "juan.amachi@gmail.com"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://www.vitalia.com/license"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8088/api/v1",
+      "description": "Server URL in Development environment"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Departamento",
+      "description": "REST API para gestionar detalles de departamentos: crear, actualizar, obtener y eliminar."
+    },
+    {
+      "name": "Municipio",
+      "description": "REST API para gestionar detalles del municipio: crear, actualizar, obtener y eliminar."
+    },
+    {
+      "name": "DoctorProfessionSpeciality",
+      "description": "Rest API SIIM APP to CREATE, UPDATE, FETCH and DELETE DoctorProfessionSpeciality details"
+    },
+    {
+      "name": "Provincia",
+      "description": "REST API para gestionar detalles de provincias: crear, actualizar, obtener y eliminar."
+    },
+    {
+      "name": "Nurse",
+      "description": "Rest API Hospital APP to CREATE, UPDATE, FETCH and DELETE Nurse details"
+    },
+    {
+      "name": "Authentication",
+      "description": "Endpoints for user authentication"
+    },
+    {
+      "name": "Country",
+      "description": "REST API para gestionar detalles de países: crear, actualizar, obtener y eliminar."
+    },
+    {
+      "name": "DepartamentoHospital",
+      "description": "Rest API Vitalia APP to CREATE, UPDATE, FETCH and DELETE DepartamentoHospital details"
+    },
+    {
+      "name": "NurseProfessionSpeciality",
+      "description": "Rest API Vitalia APP to CREATE, UPDATE, FETCH and DELETE NurseProfessionSpeciality details"
+    }
+  ],
+  "paths": {
+    "/provincias/{id}": {
+      "get": {
+        "tags": [
+          "Provincia"
+        ],
+        "summary": "Obtener una provincia por ID",
+        "description": "Devuelve un objeto Provincia por ID especificado.",
+        "operationId": "getProvinciaById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la provincia a recuperar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Provincia encontrado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Provincia"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Provincia no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Provincia"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Provincia"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Provincia"
+        ],
+        "summary": "Actualizar una provincia por ID",
+        "description": "Actualiza una provincia existente usando su ID y los datos proporcionados.",
+        "operationId": "updateProvincia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la provincia a actualizar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Provincia"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Provincia actualizado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Provincia"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Provincia no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Provincia"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Provincia"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Provincia"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Provincia"
+        ],
+        "summary": "Eliminar una provincia por ID",
+        "description": "Elimina una provincia existente usando su ID.",
+        "operationId": "deleteProvincia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la provincia a eliminar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Provincia eliminado con éxito."
+          },
+          "404": {
+            "description": "Provincia no encontrado."
+          },
+          "500": {
+            "description": "Error del servidor."
+          }
+        }
+      }
+    },
+    "/nurses/{id}": {
+      "get": {
+        "tags": [
+          "Nurse"
+        ],
+        "summary": "Nurse a obtener por ID",
+        "description": "Devuelve un objeto Nurse por ID especificado.",
+        "operationId": "getNurseById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID  Nurse a recuperar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nurse encontrado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nurse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nurse no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nurse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nurse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Nurse"
+        ],
+        "summary": "Nurse a actualizar mediante el ID",
+        "description": "Actualiza Nurse existente usando su ID y los datos proporcionados.",
+        "operationId": "updateNurse",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del Nurse a actualizar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Nurse"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Nurse actualizado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nurse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nurse no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nurse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nurse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nurse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Nurse"
+        ],
+        "summary": "Nurse a eliminar por ID",
+        "description": "Elimina un Nurse existente usando su ID.",
+        "operationId": "deleteNurse",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del Nurse a eliminar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nurse eliminado con éxito."
+          },
+          "404": {
+            "description": "Nurse no encontrado."
+          },
+          "500": {
+            "description": "Error del servidor."
+          }
+        }
+      }
+    },
+    "/nurseprofessionspecialities/{id}": {
+      "get": {
+        "tags": [
+          "NurseProfessionSpeciality"
+        ],
+        "summary": "Obtener un NurseProfessionSpeciality por ID",
+        "description": "Devuelve un objeto NurseProfessionSpeciality por ID especificado.",
+        "operationId": "getNurseProfessionSpecialityById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del nurseProfessionSpeciality a recuperar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NurseProfessionSpeciality encontrado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NurseProfessionSpeciality no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NurseProfessionSpeciality"
+        ],
+        "summary": "Actualizar un NurseProfessionSpeciality por ID",
+        "description": "Actualiza un NurseProfessionSpeciality existente usando su ID y los datos proporcionados.",
+        "operationId": "updateNurseProfessionSpeciality",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del NurseProfessionSpeciality a actualizar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NurseProfessionSpeciality"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "NurseProfessionSpeciality actualizado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NurseProfessionSpeciality no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NurseProfessionSpeciality"
+        ],
+        "summary": "NurseProfessionSpeciality a eliminar por ID",
+        "description": "Elimina un NurseProfessionSpeciality existente usando su ID.",
+        "operationId": "deleteNurseProfessionSpeciality",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del NurseProfessionSpeciality a eliminar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "NurseProfessionSpeciality eliminado con éxito."
+          },
+          "404": {
+            "description": "NurseProfessionSpeciality no encontrado."
+          },
+          "500": {
+            "description": "Error del servidor."
+          }
+        }
+      }
+    },
+    "/municipios/{id}": {
+      "get": {
+        "tags": [
+          "Municipio"
+        ],
+        "summary": "Obtener una municipio por ID",
+        "description": "Devuelve un objeto Municipio por ID especificado.",
+        "operationId": "getMunicipioById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del municipio a recuperar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Municipio"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Municipio no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Municipio"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Municipio encontrado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Municipio"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Municipio"
+        ],
+        "summary": "Actualizar un municipio por ID",
+        "description": "Actualiza un municipio existente usando su ID y los datos proporcionados.",
+        "operationId": "updateMunicipio",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del municipio a actualizar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Municipio"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Municipio"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Municipio"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Municipio no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Municipio"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Municipio actualizado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Municipio"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Municipio"
+        ],
+        "summary": "Eliminar un municipio por ID",
+        "description": "Elimina un municipio existente usando su ID.",
+        "operationId": "deleteMunicipio",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del municipio a eliminar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Municipio eliminado con éxito."
+          },
+          "500": {
+            "description": "Error del servidor."
+          },
+          "404": {
+            "description": "Municipio no encontrado."
+          }
+        }
+      }
+    },
+    "/doctorprofessionspecialities/{id}": {
+      "get": {
+        "tags": [
+          "DoctorProfessionSpeciality"
+        ],
+        "summary": "Obtener un doctorProfessionSpeciality por ID",
+        "description": "Devuelve un objeto DoctorProfessionSpeciality por ID especificado.",
+        "operationId": "getDoctorProfessionSpecialityById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del doctorProfessionSpeciality a recuperar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DoctorProfessionSpeciality encontrado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "DoctorProfessionSpeciality no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DoctorProfessionSpeciality"
+        ],
+        "summary": "Actualizar un doctorProfessionSpeciality por ID",
+        "description": "Actualiza un doctorProfessionSpeciality existente usando su ID y los datos proporcionados.",
+        "operationId": "updateDoctorProfessionSpeciality",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del doctorProfessionSpeciality a actualizar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "DoctorProfessionSpeciality actualizado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "DoctorProfessionSpeciality no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DoctorProfessionSpeciality"
+        ],
+        "summary": "Eliminar un doctorProfessionSpeciality por ID",
+        "description": "Elimina un doctorProfessionSpeciality existente usando su ID.",
+        "operationId": "deleteDoctorProfessionSpeciality",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del doctorProfessionSpeciality a eliminar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DoctorProfessionSpeciality eliminado con éxito."
+          },
+          "404": {
+            "description": "DoctorProfessionSpeciality no encontrado."
+          },
+          "500": {
+            "description": "Error del servidor."
+          }
+        }
+      }
+    },
+    "/departamentos/{id}": {
+      "get": {
+        "tags": [
+          "Departamento"
+        ],
+        "summary": "Obtener un departamento por ID",
+        "description": "Devuelve un objeto Departamento por ID especificado.",
+        "operationId": "getDepartamentoById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del departamento a recuperar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Departamento encontrado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Departamento no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Departamento"
+        ],
+        "summary": "Actualizar un departamento por ID",
+        "description": "Actualiza un departamento existente usando su ID y los datos proporcionados.",
+        "operationId": "updateDepartamento",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del departamento a actualizar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Departamento"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Departamento actualizado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Departamento no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Departamento"
+        ],
+        "summary": "Eliminar un departamento por ID",
+        "description": "Elimina un departamento existente usando su ID.",
+        "operationId": "deleteDepartamento",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del departamento a eliminar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Departamento eliminado con éxito."
+          },
+          "404": {
+            "description": "Departamento no encontrado."
+          },
+          "500": {
+            "description": "Error del servidor."
+          }
+        }
+      }
+    },
+    "/departamentohospitales/{id}": {
+      "get": {
+        "tags": [
+          "DepartamentoHospital"
+        ],
+        "summary": "Obtener un departamentoHospital por ID",
+        "description": "Devuelve un objeto DepartamentoHospital por ID especificado.",
+        "operationId": "getDepartamentoHospitalById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del departamentoHospital a recuperar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DepartamentoHospital encontrado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartamentoHospital"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "DepartamentoHospital no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartamentoHospital"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartamentoHospital"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DepartamentoHospital"
+        ],
+        "summary": "Actualizar un departamentoHospital por ID",
+        "description": "Actualiza un departamentoHospital existente usando su ID y los datos proporcionados.",
+        "operationId": "updateDepartamentoHospital",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del DepartamentoHospital a actualizar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepartamentoHospital"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "DepartamentoHospital actualizado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartamentoHospital"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "DepartamentoHospital no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartamentoHospital"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartamentoHospital"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartamentoHospital"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DepartamentoHospital"
+        ],
+        "summary": "DepartamentoHospital a eliminar por ID",
+        "description": "Elimina un DepartamentoHospital existente usando su ID.",
+        "operationId": "deleteDepartamentoHospital",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del DepartamentoHospital a eliminar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DepartamentoHospital eliminado con éxito."
+          },
+          "404": {
+            "description": "DepartamentoHospital no encontrado."
+          },
+          "500": {
+            "description": "Error del servidor."
+          }
+        }
+      }
+    },
+    "/countries/{id}": {
+      "get": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Obtener un país por ID",
+        "description": "Devuelve un objeto Country por ID especificado.",
+        "operationId": "getCountryById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del país a recuperar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "País encontrado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "País no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Actualizar un país por ID",
+        "description": "Actualiza un país existente usando su ID y los datos proporcionados.",
+        "operationId": "updateCountry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del país a actualizar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Country"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "País actualizado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "País no encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Eliminar un país por ID",
+        "description": "Elimina un país existente usando su ID.",
+        "operationId": "deleteCountry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del país a eliminar.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "País eliminado con éxito."
+          },
+          "404": {
+            "description": "País no encontrado."
+          },
+          "500": {
+            "description": "Error del servidor."
+          }
+        }
+      }
+    },
+    "/provincias": {
+      "get": {
+        "tags": [
+          "Provincia"
+        ],
+        "summary": "Obtener provincias con paginación",
+        "description": "Devuelve una lista de provincias paginada.",
+        "operationId": "getPaginatedProvincias",
+        "parameters": [
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "description": "Índice de la página a recuperar.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Tamaño de la página.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            },
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de provincias recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoProvincia"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de paginación inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoProvincia"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoProvincia"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Provincia"
+        ],
+        "summary": "Crear una provincia",
+        "description": "Crea una nueva provincia usando los datos proporcionados en el cuerpo de la solicitud.",
+        "operationId": "createProvincia",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Provincia"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Provincia creado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Provincia"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Provincia"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Provincia"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nurses": {
+      "get": {
+        "tags": [
+          "Nurse"
+        ],
+        "summary": "Obtener una lista con paginación de Nurse",
+        "description": "Devuelve una lista paginada de Nurse",
+        "operationId": "getPaginatedNurses",
+        "parameters": [
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "description": "Índice de la página a recuperar.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Tamaño de la página.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            },
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de nurseProfessionSpecialities recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoNurse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de paginación inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoNurse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoNurse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Nurse"
+        ],
+        "summary": "Nurse a crear",
+        "description": "Crea un nuevo Nurse usando los datos proporcionados en el cuerpo de la solicitud.",
+        "operationId": "createNurse",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Nurse"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Nurse creado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nurse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nurse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Nurse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nurseprofessionspecialities": {
+      "get": {
+        "tags": [
+          "NurseProfessionSpeciality"
+        ],
+        "summary": "Obtener una lista con paginación de NurseProfessionSpeciality",
+        "description": "Devuelve una lista paginada de NurseProfessionSpeciality",
+        "operationId": "getPaginatedNurseProfessionSpecialities",
+        "parameters": [
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "description": "Índice de la página a recuperar.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Tamaño de la página.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            },
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de nurseProfessionSpecialities recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoNurseProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de paginación inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoNurseProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoNurseProfessionSpeciality"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "NurseProfessionSpeciality"
+        ],
+        "summary": "Crear un NurseProfessionSpeciality",
+        "description": "Crea un nuevo NurseProfessionSpeciality usando los datos proporcionados en el cuerpo de la solicitud.",
+        "operationId": "createNurseProfessionSpeciality",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NurseProfessionSpeciality"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "NurseProfessionSpeciality creado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/municipios": {
+      "get": {
+        "tags": [
+          "Municipio"
+        ],
+        "summary": "Obtener municipios con paginación",
+        "description": "Devuelve una lista de municipios paginada.",
+        "operationId": "getPaginatedMunicipios",
+        "parameters": [
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "description": "Índice de la página a recuperar.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Tamaño de la página.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            },
+            "example": 10
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoMunicipio"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Lista de municipios recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoMunicipio"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de paginación inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoMunicipio"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Municipio"
+        ],
+        "summary": "Crear un municipio",
+        "description": "Crea un nuevo municipio usando los datos proporcionados en el cuerpo de la solicitud.",
+        "operationId": "createMunicipio",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Municipio"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Municipio creado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Municipio"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Municipio"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Municipio"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/doctorprofessionspecialities": {
+      "get": {
+        "tags": [
+          "DoctorProfessionSpeciality"
+        ],
+        "summary": "Obtener doctorProfessionSpecialities con paginación",
+        "description": "Devuelve una lista de doctorProfessionSpecialities paginada.",
+        "operationId": "getPaginatedDoctorProfessionSpecialities",
+        "parameters": [
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "description": "Índice de la página a recuperar.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Tamaño de la página.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            },
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de doctorProfessionSpecialitys recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoDoctorProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de paginación inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoDoctorProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoDoctorProfessionSpeciality"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DoctorProfessionSpeciality"
+        ],
+        "summary": "Crear un doctorProfessionSpeciality",
+        "description": "Crea un nuevo doctorProfessionSpeciality usando los datos proporcionados en el cuerpo de la solicitud.",
+        "operationId": "createDoctorProfessionSpeciality",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "DoctorProfessionSpeciality creado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/departamentos": {
+      "get": {
+        "tags": [
+          "Departamento"
+        ],
+        "summary": "Obtener departamentos con paginación",
+        "description": "Devuelve una lista de departamentos paginada.",
+        "operationId": "getPaginatedDepartamentos",
+        "parameters": [
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "description": "Índice de la página a recuperar.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Tamaño de la página.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            },
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de departamentos recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoDepartamento"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de paginación inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoDepartamento"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoDepartamento"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Departamento"
+        ],
+        "summary": "Crear un departamento",
+        "description": "Crea un nuevo departamento usando los datos proporcionados en el cuerpo de la solicitud.",
+        "operationId": "createDepartamento",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Departamento"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Departamento creado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Departamento"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/departamentohospitales": {
+      "get": {
+        "tags": [
+          "DepartamentoHospital"
+        ],
+        "summary": "Obtener una lista con paginación de DepartamentoHospital",
+        "description": "Devuelve una lista paginada de DepartamentoHospital",
+        "operationId": "getAllPaginatedDepartamentoHospital",
+        "parameters": [
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "description": "Índice de la página a recuperar.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Tamaño de la página.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            },
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de DepartamentoHospital recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoDepartamentoHospital"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de paginación inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoDepartamentoHospital"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoDepartamentoHospital"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DepartamentoHospital"
+        ],
+        "summary": "Crear un departamentoHospital",
+        "description": "Crea un nuevo departamentoHospital usando los datos proporcionados en el cuerpo de la solicitud.",
+        "operationId": "createDepartamentoHospital",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepartamentoHospital"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "DepartamentoHospital creado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartamentoHospital"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartamentoHospital"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartamentoHospital"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/countries": {
+      "get": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Obtener países con paginación",
+        "description": "Devuelve una lista de países paginada.",
+        "operationId": "getPaginatedCountries",
+        "parameters": [
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "description": "Índice de la página a recuperar.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "example": 0
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Tamaño de la página.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            },
+            "example": 10
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de países recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoCountry"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parámetros de paginación inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoCountry"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResponseDtoCountry"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Crear un país",
+        "description": "Crea un nuevo país usando los datos proporcionados en el cuerpo de la solicitud.",
+        "operationId": "createCountry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Country"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "País creado con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Country"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegisterDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        }
+      }
+    },
+    "/auth/authenticate": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "authenticate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/provincias/all": {
+      "get": {
+        "tags": [
+          "Provincia"
+        ],
+        "summary": "Obtener todos las provincias",
+        "description": "Devuelve la lista completa de provincias.",
+        "operationId": "getAllProvincias",
+        "responses": {
+          "200": {
+            "description": "Lista de provincias recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Provincia"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Provincia"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nurses/all": {
+      "get": {
+        "tags": [
+          "Nurse"
+        ],
+        "summary": "Obtener todos los Nurse",
+        "description": "Devuelve la lista completa de Nurse",
+        "operationId": "getAllNurses",
+        "responses": {
+          "200": {
+            "description": "Lista de Nurse recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Nurse"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Nurse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nurseprofessionspecialities/all": {
+      "get": {
+        "tags": [
+          "NurseProfessionSpeciality"
+        ],
+        "summary": "Obtener todos los NurseProfessionSpeciality",
+        "description": "Devuelve la lista completa de NurseProfessionSpeciality",
+        "operationId": "getAllNurseProfessionSpecialities",
+        "responses": {
+          "200": {
+            "description": "Lista de NurseProfessionSpeciality recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NurseProfessionSpeciality"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/municipios/all": {
+      "get": {
+        "tags": [
+          "Municipio"
+        ],
+        "summary": "Obtener todos los municipios",
+        "description": "Devuelve la lista completa de municipios.",
+        "operationId": "getAllMunicipios",
+        "responses": {
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Municipio"
+                  }
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Lista de municipios recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Municipio"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/doctorprofessionspecialities/all": {
+      "get": {
+        "tags": [
+          "DoctorProfessionSpeciality"
+        ],
+        "summary": "Obtener todos los doctorProfessionSpecialities",
+        "description": "Devuelve la lista completa de doctorProfessionSpecialities.",
+        "operationId": "getAllDoctorProfessionSpecialities",
+        "responses": {
+          "200": {
+            "description": "Lista de doctorProfessionSpecialities recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/departamentos/all": {
+      "get": {
+        "tags": [
+          "Departamento"
+        ],
+        "summary": "Obtener todos los departamentos",
+        "description": "Devuelve la lista completa de departamentos.",
+        "operationId": "getAllDepartamentos",
+        "responses": {
+          "200": {
+            "description": "Lista de departamentos recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Departamento"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Departamento"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/departamentohospitales/all": {
+      "get": {
+        "tags": [
+          "DepartamentoHospital"
+        ],
+        "summary": "Obtener todos los DepartamentoHospital",
+        "description": "Devuelve la lista completa de DepartamentoHospital",
+        "operationId": "getAllDepartamentoHospital",
+        "responses": {
+          "200": {
+            "description": "Lista de DepartamentoHospital recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DepartamentoHospital"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DepartamentoHospital"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/countries/all": {
+      "get": {
+        "tags": [
+          "Country"
+        ],
+        "summary": "Obtener todos los países",
+        "description": "Devuelve la lista completa de países.",
+        "operationId": "getAllCountries",
+        "responses": {
+          "200": {
+            "description": "Lista de países recuperada con éxito.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Country"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error del servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Country"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/activate-account": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "operationId": "activateAccount",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Country": {
+        "required": [
+          "iso",
+          "name",
+          "niceName",
+          "phoneCode"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Identificador unico",
+            "format": "int64",
+            "example": 1
+          },
+          "iso": {
+            "maxLength": 2,
+            "minLength": 2,
+            "type": "string",
+            "description": "ISO code of Country",
+            "example": "BO"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of Country",
+            "example": "BOLIVIA"
+          },
+          "niceName": {
+            "type": "string",
+            "description": "Nice name of Country",
+            "example": "Bolivia"
+          },
+          "iso3": {
+            "maxLength": 3,
+            "minLength": 1,
+            "type": "string",
+            "description": "ISO3 of Country",
+            "example": "BOL"
+          },
+          "numCode": {
+            "type": "integer",
+            "description": "Num Code of Country",
+            "format": "int32",
+            "example": 68
+          },
+          "phoneCode": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Phone code of the Country",
+            "format": "int32",
+            "example": 591
+          }
+        },
+        "description": "Detalles del país a crear."
+      },
+      "Departamento": {
+        "required": [
+          "country",
+          "nombre"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id del Departamento",
+            "format": "int64",
+            "example": 1
+          },
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del Departamento",
+            "example": "La Paz"
+          },
+          "poblacion": {
+            "type": "integer",
+            "description": "Poblacion del Departamento",
+            "format": "int32",
+            "example": 4567
+          },
+          "superficie": {
+            "type": "number",
+            "description": "Superficie del Departamento",
+            "example": 12345
+          },
+          "country": {
+            "$ref": "#/components/schemas/Country"
+          }
+        },
+        "description": "Detalles del departamento a crear.",
+        "example": {
+          "idDepartamento": 2,
+          "country": {
+            "idCountry": 26
+          }
+        }
+      },
+      "Provincia": {
+        "required": [
+          "departamento",
+          "nombre"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID de una Provincia",
+            "format": "int64",
+            "example": 1
+          },
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del Provincia",
+            "example": "Cercado"
+          },
+          "poblacion": {
+            "type": "integer",
+            "description": "Poblacion de la Provincia",
+            "format": "int32",
+            "example": 4567
+          },
+          "superficie": {
+            "type": "number",
+            "description": "Superficie de la Provincia",
+            "example": 12345
+          },
+          "departamento": {
+            "$ref": "#/components/schemas/Departamento"
+          }
+        },
+        "description": "Detalles de la provincia a crear."
+      },
+      "Address": {
+        "required": [
+          "direccion"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id Address de Address",
+            "format": "int64",
+            "example": 1
+          },
+          "numero": {
+            "type": "string",
+            "description": "Numero de la Direccion",
+            "example": "11957"
+          },
+          "direccion": {
+            "type": "string",
+            "description": "Direccion principal de address",
+            "example": "calle Jean Talon"
+          },
+          "bloque": {
+            "type": "string",
+            "description": "Bloque al que pertenece el address",
+            "example": "Bloque A"
+          },
+          "piso": {
+            "type": "integer",
+            "description": "Piso del address",
+            "format": "int32",
+            "example": 1
+          },
+          "numeroDepartamento": {
+            "type": "string",
+            "description": "Numero de departamento de la Direccion"
+          },
+          "medidor": {
+            "type": "string",
+            "description": "medidor de la Direccion"
+          },
+          "casillaPostal": {
+            "type": "string",
+            "description": "Casilla Postal de Address"
+          },
+          "ciudad": {
+            "type": "string",
+            "description": "Ciudad de Address",
+            "example": "La Paz"
+          },
+          "location": {
+            "type": "string",
+            "description": "Geometry data with spatial index"
+          },
+          "country": {
+            "$ref": "#/components/schemas/Country"
+          },
+          "departamento": {
+            "$ref": "#/components/schemas/Departamento"
+          }
+        },
+        "description": "Schema to hold Address information"
+      },
+      "Nurse": {
+        "required": [
+          "apellidoPaterno",
+          "nombre",
+          "telefono"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id de la Persona",
+            "format": "int64",
+            "example": 1
+          },
+          "personType": {
+            "type": "string",
+            "enum": [
+              "ADMIN",
+              "DOCTOR",
+              "NURSE",
+              "PATIENT",
+              "USER"
+            ]
+          },
+          "nombre": {
+            "type": "string",
+            "description": "Nombre de la Persona",
+            "example": "Eric"
+          },
+          "segundoNombre": {
+            "type": "string",
+            "description": "Segundo nombre de la Persona",
+            "example": "Juan"
+          },
+          "apellidoPaterno": {
+            "type": "string",
+            "description": "Apellido Paterno de la Persona",
+            "example": "Bouchard"
+          },
+          "apellidoMaterno": {
+            "type": "string",
+            "description": "Apellido Materno de la Persona",
+            "example": "Larico"
+          },
+          "nombreCompleto": {
+            "type": "string",
+            "description": "Nombre Completo de la Persona",
+            "example": "Jose Larico"
+          },
+          "diaNacimiento": {
+            "type": "integer",
+            "description": "El dia de nacimiento de la Persona",
+            "format": "int32",
+            "example": 24
+          },
+          "mesNacimiento": {
+            "type": "integer",
+            "description": "El mes de nacimiento de la Persona",
+            "format": "int32",
+            "example": 6
+          },
+          "anoNacimiento": {
+            "type": "integer",
+            "description": "El ano de nacimiento de la Persona",
+            "format": "int32",
+            "example": 2000
+          },
+          "fechaNacimiento": {
+            "type": "string",
+            "description": "La fecha de nacimiento de la Persona",
+            "format": "date",
+            "example": "0029-11-21"
+          },
+          "estadoCivil": {
+            "type": "string",
+            "enum": [
+              "SOLTERO",
+              "CASADO",
+              "UNION_LIBRE",
+              "SEPARADO",
+              "DIVORCIADO",
+              "VIUDO"
+            ]
+          },
+          "genero": {
+            "type": "string",
+            "enum": [
+              "MASCULINO",
+              "FEMENINO",
+              "DESCONOCIDO"
+            ]
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "telefono": {
+            "type": "string",
+            "description": "Telefono de la Persona",
+            "example": "514 2367944"
+          },
+          "celular": {
+            "type": "string",
+            "description": "Celular de la Persona",
+            "example": "514 236 7944"
+          },
+          "photo": {
+            "type": "string",
+            "description": "Photo of Nurses ",
+            "format": "byte"
+          },
+          "idCard": {
+            "type": "string",
+            "description": "Id Card of Nurses",
+            "example": "123457"
+          },
+          "nurseProfessionSpecialities": {
+            "uniqueItems": true,
+            "type": "array",
+            "description": "The Specialities of Nurses",
+            "items": {
+              "$ref": "#/components/schemas/NurseProfessionSpeciality"
+            }
+          }
+        },
+        "description": "Detalles del Nurse a crear."
+      },
+      "NurseProfessionSpeciality": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id NursingSpecialty of Nurse",
+            "format": "int64",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of Nurses speciality",
+            "example": "EMERGENCIAS"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of Nurse specialitys",
+            "example": "Enfermería de emergencias"
+          }
+        },
+        "description": "Detalles del NurseProfessionSpeciality a crear."
+      },
+      "Municipio": {
+        "required": [
+          "nombre",
+          "provincia"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id Municipio de un Municipio",
+            "format": "int64",
+            "example": 1
+          },
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del Municipio",
+            "example": "Cercado"
+          },
+          "direccion": {
+            "type": "string",
+            "description": "Direccion del Municipio",
+            "example": "4567 calle Union"
+          },
+          "codigoMunicipio": {
+            "type": "integer",
+            "description": "Codigo del Municipio",
+            "format": "int32",
+            "example": 12345
+          },
+          "poblacion": {
+            "type": "integer",
+            "description": "Poblacion del Municipio",
+            "format": "int32",
+            "example": 4567
+          },
+          "superficie": {
+            "type": "number",
+            "description": "Superficie del Municipio",
+            "example": 12345
+          },
+          "provincia": {
+            "$ref": "#/components/schemas/Provincia"
+          }
+        },
+        "description": "Detalles del municipio a crear."
+      },
+      "DoctorProfessionSpeciality": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id DoctorProfessionSpeciality",
+            "format": "int64",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of DoctorProfessionSpeciality",
+            "example": "Ophthalmology"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of DoctorProfessionSpeciality",
+            "example": "Diagnosis and treatment of eye conditions"
+          }
+        },
+        "description": "Detalles del doctorProfessionSpeciality a crear."
+      },
+      "DepartamentoHospital": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "id of Department ",
+            "format": "int64",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of Department",
+            "example": "Pediatría"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of Department",
+            "example": "Departamento enfocado en el cuidado de niños y adolescentes."
+          }
+        },
+        "description": "Detalles del DepartamentoHospital a crear."
+      },
+      "UserRegisterDto": {
+        "required": [
+          "email",
+          "firstName",
+          "lastName",
+          "password",
+          "personType"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 2147483647,
+            "minLength": 8,
+            "type": "string"
+          },
+          "personType": {
+            "type": "string",
+            "enum": [
+              "ADMIN",
+              "DOCTOR",
+              "NURSE",
+              "PATIENT",
+              "USER"
+            ]
+          },
+          "roles": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "avatar": {
+            "type": "string",
+            "format": "byte"
+          }
+        }
+      },
+      "AuthenticationRequest": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 2147483647,
+            "minLength": 8,
+            "type": "string"
+          }
+        }
+      },
+      "AuthenticationResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "userRegister": {
+            "$ref": "#/components/schemas/UserRegisterDto"
+          }
+        }
+      },
+      "PageResponseDtoProvincia": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Provincia"
+            }
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PageResponseDtoNurse": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Nurse"
+            }
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PageResponseDtoNurseProfessionSpeciality": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NurseProfessionSpeciality"
+            }
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PageResponseDtoMunicipio": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Municipio"
+            }
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PageResponseDtoDoctorProfessionSpeciality": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DoctorProfessionSpeciality"
+            }
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PageResponseDtoDepartamento": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Departamento"
+            }
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PageResponseDtoDepartamentoHospital": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DepartamentoHospital"
+            }
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PageResponseDtoCountry": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Country"
+            }
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "empty": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    }
+  }
+}

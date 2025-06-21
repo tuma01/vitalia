@@ -1,0 +1,27 @@
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  opacity: 50% !important;
+  cursor: inherit;
+  width: var(--mdc-checkbox-state-layer-size, 40px);
+  height: var(--mdc-checkbox-state-layer-size, 40px);
+  top: calc((var(--mdc-checkbox-state-layer-size, 40px) - var(--mdc-checkbox-state-layer-size, 40px)) / 2);
+  right: calc((var(--mdc-checkbox-state-layer-size, 40px) - var(--mdc-checkbox-state-layer-size, 40px)) / 2);
+  left: calc((var(--mdc-checkbox-state-layer-size, 40px) - var(--mdc-checkbox-state-layer-size, 40px)) / 2);
+  border-radius: 1;
+  border-color: aqua !important;
+  background-color: brown !important;
+}
+
+
+.success-snackbar {
+  background-color: #4CAF50 !important;
+  color: white !important;
+}
+
+.error-snackbar {
+  background-color: #F44336 !important;
+  color: white !important;
+}

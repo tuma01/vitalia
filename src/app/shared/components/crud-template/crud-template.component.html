@@ -1,0 +1,48 @@
+<mtx-grid #grid
+    [data]="filteredData"
+    [columns]="columns"
+    [loading]="isLoading"
+    [columnResizable]="tableConfig.columnResizable ?? false"
+    [multiSelectable]="tableConfig.multiSelectable ?? false"
+    [rowSelectable]="tableConfig.rowSelectable ?? false"
+    [hideRowSelectionCheckbox]="tableConfig.hideRowSelectionCheckbox ?? false"
+    [rowHover]="tableConfig.rowHover ?? false"
+    [rowStriped]="tableConfig.rowStriped ?? false"
+    [showToolbar]="tableConfig.showToolbar ?? false"
+    [toolbarTemplate]="toolbarTemplate"
+    [toolbarTitle]="''"
+    [columnHideable]="tableConfig.columnHideable ?? false"
+    [columnSortable]="tableConfig.columnSortable ?? false"
+    [columnPinnable]="tableConfig.columnPinnable ?? false"
+    [expandable]="tableConfig.expandable ?? false"
+    [showPaginator]="tableConfig.showPaginator ?? false"
+    [pageSize]="tableConfig.pageSize ?? 5"
+    [pageSizeOptions]="tableConfig.pageSizeOptions ?? [5, 10, 50, 100]"
+    (sortChange)="sortChange.emit($event)"
+    (selectionChange)="selectChange.emit($event)"
+>
+    <ng-template #toolbarTemplate>
+        <div style="display: flex; align-items: center; gap: 16px; height: 100%;">
+            <mat-form-field appearance="outline" class="w-[350px] search-field" style="height: 100%;">
+                <mat-label>{{ 'search' | translate }}</mat-label>
+                <input matInput
+                    #searchInput
+                    (keyup)="search.emit(searchInput.value)"
+                    [placeholder]="config.translations.searchPlaceholder | translate: { entityName: config.translations.entityName | translate }"
+                    style="height: 100%;">
+                <mat-icon matPrefix>search</mat-icon>
+                @if (searchInput.value) {
+                    <button matSuffix mat-icon-button
+                            (click)="clearSearch.emit(searchInput)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                }
+            </mat-form-field>
+            <div class="spacer"></div>
+            <button mat-raised-button color="primary" (click)="create.emit()">
+                <mat-icon>add</mat-icon>
+                {{ 'add' | translate }} {{ config.translations.entityName | translate }}
+            </button>
+        </div>
+    </ng-template>
+</mtx-grid>

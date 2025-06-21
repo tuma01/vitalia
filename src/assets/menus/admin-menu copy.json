@@ -1,0 +1,327 @@
+{
+  "menu": [
+    {
+      "route": "dashboard",
+      "name": "dashboard",
+      "type": "link",
+      "icon": "dashboard",
+      "badge": {
+        "color": "red-50",
+        "value": "5"
+      }
+    },
+    {
+      "route": "hospital",
+      "name": "hospital",
+      "type": "sub",
+      "icon": "local_hospital",
+      "children": [
+        {
+          "route": "/admin/hospitals",
+          "name": "hospitals",
+          "type": "link"
+        },
+        {
+          "route": "/admin/hospital-departments",
+          "name": "hospitalDepartments",
+          "type": "link"
+        },
+        {
+          "route": "/admin/hospital-services",
+          "name": "hospitalServices",
+          "type": "link"
+        },
+        {
+          "route": "/admin/beds-rooms",
+          "name": "bedsRooms",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "patient",
+      "name": "patient",
+      "type": "sub",
+      "icon": "person",
+      "children": [
+        {
+          "route": "/admin/patients",
+          "name": "patients",
+          "type": "link"
+        },
+        {
+          "route": "/admin/appointments",
+          "name": "appointments",
+          "type": "link"
+        },
+        {
+          "route": "/admin/admissions",
+          "name": "admissions",
+          "type": "link"
+        },
+        {
+          "route": "/admin/discharges",
+          "name": "discharges",
+          "type": "link"
+        },
+        {
+          "route": "/admin/medical-records",
+          "name": "medicalRecords",
+          "type": "link"
+        },
+        {
+          "route": "/admin/billing-payments",
+          "name": "billingPayments",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "medico",
+      "name": "medico",
+      "type": "sub",
+      "icon": "person",
+      "children": [
+        {
+          "route": "listaMedicos",
+          "name": "listaMedicos",
+          "type": "link"
+        },
+        {
+          "route": "registrarMedico",
+          "name": "registrarMedico",
+          "type": "link"
+        },
+        {
+          "route": "editarMedico",
+          "name": "editarMedico",
+          "type": "link"
+        },
+        {
+          "route": "asignarDepartamento",
+          "name": "asignarDepartamento",
+          "type": "link"
+        },
+        {
+          "route": "gestionDeTurnos",
+          "name": "gestionDeTurnos",
+          "type": "link"
+        },
+        {
+          "route": "perfilMedico",
+          "name": "perfilMedico",
+          "type": "link"
+        }
+      ]
+    },
+
+    {
+      "route": "nurseEmployee",
+      "name": "nurseEmployee",
+      "type": "sub",
+      "icon": "group",
+      "children": [
+        {
+          "route": "/admin/nurses",
+          "name": "nurses",
+          "type": "link"
+        },
+        {
+          "route": "/admin/employees",
+          "name": "employees",
+          "type": "link"
+        },
+        {
+          "route": "/admin/employee-schedules",
+          "name": "workSchedules",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "admin",
+      "name": "admin",
+      "type": "sub",
+      "icon": "settings",
+      "children": [
+        {
+          "route": "",
+          "name": "pais",
+          "type": "sub",
+          "children": [
+            {
+              "route": "/pais/paises",
+              "name": "paises",
+              "type": "link"
+            },
+            {
+              "route": "pais/addPais",
+              "name": "addPais",
+              "type": "link",
+              "visible": true
+            },
+            {
+              "route": "pais/editPais",
+              "name": "editPais",
+              "type": "link",
+              "visible": false
+            }
+          ]
+        },
+        {
+          "route": "",
+          "name": "departamento",
+          "type": "sub",
+          "children": [
+            {
+              "route": "departamento/departamentos",
+              "name": "departamentos",
+              "type": "link",
+              "visible" : true
+            },
+            {
+              "route": "departamento/addDepartamento",
+              "name": "addDepartamento",
+              "type": "link",
+              "visible" : true
+            },
+            {
+              "route": "departamento/editDepartamento",
+              "name": "editDepartamento",
+              "type": "link",
+              "visible": false
+            }
+          ]
+        },
+        {
+          "route": "",
+          "name": "provincia",
+          "type": "sub",
+          "children": [
+            {
+              "route": "provincia/provincias",
+              "name": "provincias",
+              "type": "link"
+            },
+            {
+              "route": "provincia/addProvincia",
+              "name": "addProvincia",
+              "type": "link",
+              "visible" : true
+            },
+            {
+              "route": "provincia/editProvincia",
+              "name": "editProvincia",
+              "type": "link",
+              "visible": false
+            }
+          ]
+        },
+        {
+          "route": "",
+          "name": "municipio",
+          "type": "sub",
+          "children": [
+            {
+              "route": "municipio/municipios",
+              "name": "municipios",
+              "type": "link",
+              "visible" : true
+            },
+            {
+              "route": "municipio/addMunicipio",
+              "name": "addMunicipio",
+              "type": "link",
+              "visible" : true
+            },
+            {
+              "route": "municipio/editMunicipio",
+              "name": "editMunicipio",
+              "type": "link",
+              "visible": false
+            }
+          ]
+        },
+
+        {
+          "route": "users",
+          "name": "users",
+          "type": "sub",
+          "children": [
+            {
+              "route": "/admin/user-management",
+              "name": "userManagement",
+              "type": "link"
+            },
+            {
+              "route": "/admin/roles-permissions",
+              "name": "rolesPermissions",
+              "type": "link"
+            }
+          ]
+        },
+        {
+          "route": "siteConfiguration",
+          "name": "siteConfiguration",
+          "type": "sub",
+          "children": [
+            {
+              "route": "/admin/config/general",
+              "name": "generalConfiguration",
+              "type": "link"
+            },
+            {
+              "route": "/admin/config/appointments",
+              "name": "appointmentConfiguration",
+              "type": "link"
+            },
+            {
+              "route": "/admin/config/billing",
+              "name": "billingConfiguration",
+              "type": "link"
+            },
+            {
+              "route": "/admin/config/others",
+              "name": "otherParameters",
+              "type": "link"
+            }
+          ]
+        },
+        {
+          "route": "/admin/audit-log",
+          "name": "auditLog",
+          "type": "link"
+        },
+        {
+          "route": "/admin/backup-restore",
+          "name": "backupRestore",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "profile",
+      "name": "profile",
+      "type": "sub",
+      "icon": "account_circle",
+      "children": [
+        {
+          "route": "overview",
+          "name": "overview",
+          "type": "link"
+        },
+        {
+          "route": "settings",
+          "name": "settings",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "/logout",
+      "name": "logout",
+      "type": "link",
+      "icon": "exit_to_app"
+    }
+  ]
+}

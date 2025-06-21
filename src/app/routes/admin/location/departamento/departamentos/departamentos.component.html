@@ -1,0 +1,71 @@
+<page-header class="bg-cyan-50" />
+
+<app-crud-template
+  [data]="dataList"
+  [filteredData]="filteredData"
+  [columns]="columns"
+  [isLoading]="isLoading"
+  [config]="config"
+  [tableConfig]="tableConfig"
+  (create)="createNew()"
+  (edit)="edit($event)"
+  (delete)="delete($event)"
+  (search)="onSearch($event)"
+  (clearSearch)="clearSearch($event)"
+  (selectChange)="changeSelect($event)"
+  (sortChange)="changeSort($event)"
+></app-crud-template>
+
+<!-- <page-header class="bg-cyan-50" />
+
+<mtx-grid #grid
+  [data]="filteredData"
+  [columns]="columns"
+  [loading]="isLoading"
+  [columnResizable]="columnResizable"
+  [multiSelectable]="multiSelectable"
+  [rowSelectable]="rowSelectable"
+  [hideRowSelectionCheckbox]="hideRowSelectionCheckbox"
+  [rowHover]="rowHover"
+  [rowStriped]="rowStriped"
+  [showToolbar]="showToolbar"
+  [toolbarTemplate]="toolbarTemplate"
+  [toolbarTitle]="''"
+  [columnHideable]="columnHideable"
+  [columnSortable]="columnSortable"
+  [columnPinnable]="columnPinnable"
+  [expandable]="expandable"
+  [showPaginator]="showPaginator"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 50, 100]"
+  (sortChange)="changeSort($event)"
+  (selectionChange)="changeSelect($event)"
+>
+
+  <ng-template #toolbarTemplate>
+    <div style="display: flex; align-items: center; gap: 16px; height: 100%;">
+      <mat-form-field appearance="outline" class="w-[350px]" style="height: 100%;">
+        <mat-label>{{ 'search' | translate }}</mat-label>
+        <input matInput
+              #searchInput
+              (keyup)="onSearch(searchInput.value)"
+              [placeholder]="placeholderValue"
+              style="height: 100%;">
+        <mat-icon matPrefix>search</mat-icon>
+        @if (searchInput.value) {
+          <button matSuffix mat-icon-button
+                  (click)="clearSearch(searchInput)">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+      </mat-form-field>
+      <div class="spacer"></div>
+      <button mat-raised-button color="primary" (click)="createNewDepartamento()">
+        <mat-icon>add</mat-icon>
+        {{ 'add' | translate }}{{ 'department' | translate }}
+      </button>
+    </div>
+  </ng-template>
+</mtx-grid> -->
+
+

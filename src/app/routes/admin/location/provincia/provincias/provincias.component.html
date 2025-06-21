@@ -1,0 +1,16 @@
+<page-header class="bg-cyan-50" />
+<app-crud-template
+  [data]="dataList"
+  [filteredData]="filteredData"
+  [columns]="columns"
+  [isLoading]="isLoading"
+  [config]="config"
+  [tableConfig]="tableConfig"
+  (create)="createNew()"
+  (edit)="edit($event)"
+  (delete)="delete($event)"
+  (search)="onSearch($event)"
+  (clearSearch)="clearSearch($event)"
+  (selectChange)="changeSelect($event)"
+  (sortChange)="changeSort($event)"
+></app-crud-template>
