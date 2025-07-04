@@ -10,4 +10,5 @@ export { DoctorProfessionSpecialityService } from './services/doctor-profession-
 export { DepartamentoService } from './services/departamento.service';
 export { DepartamentoHospitalService } from './services/departamento-hospital.service';
 export { CountryService } from './services/country.service';
+export { AvatarControllerService } from './services/avatar-controller.service';
 export { AuthenticationService } from './services/authentication.service';

@@ -1,6 +1,183 @@
 <page-header class="bg-cyan-50" />
 
 <mat-card>
+
+<form [formGroup]="form!" class="form-field-full" (ngSubmit)="onSubmit()">
+  <mat-tab-group>
+
+    <mat-tab label="Información Personal">
+      <ng-container *ngTemplateOutlet="infoPersonal; context: { formGroup: form.get('tab1Form') }"></ng-container>
+    </mat-tab>
+
+    <mat-tab label="Contacto">
+      <ng-container *ngTemplateOutlet="contacto; context: { formGroup: form.get('tab2Form') }"></ng-container>
+    </mat-tab>
+
+    <mat-tab label="Dirección">
+      <ng-container *ngTemplateOutlet="direccion; context: { formGroup: form.get('tab3Form') }"></ng-container>
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+
+  <!-- <div style="padding: 20px; text-align: center;">
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      Enviar Formulario
+    </button>
+  </div> -->
+
+  <div class="d-flex justify-content-end">
+        <button
+          mat-stroked-button
+          type="button"
+          (click)="resetForm()"
+          class="m-r-8"
+          [disabled]="form.pristine"
+        >
+           {{ 'common.clear' | translate }}
+        </button>
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+           {{ 'common.save' | translate }} {{ entityNameKey | translate }}
+        </button>
+      </div>
+</form>
+</mat-card>
+
+<ng-template #infoPersonal let-formGroup="formGroup">
+  <div [formGroup]="formGroup" style="padding: 20px;">
+    <div class="row">
+      <div class="col-sm-6 col-xl-4">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'nurse.nombre' | translate }}</mat-label>
+          <input matInput formControlName="nombre" required>
+          <mat-error *ngIf="formGroup.get('nombre')?.hasError('required') && formGroup.get('nombre')?.touched">
+            El nombre es requerido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-6 col-xl-4">
+        <mat-form-field>
+          <mat-label>{{ 'nurse.apellidoPaterno' | translate }}</mat-label>
+          <input matInput placeholder="Ej: Amachi" formControlName="apellidoPaterno">
+          <mat-error *ngIf="formGroup.get('apellidoPaterno')?.hasError('required') && formGroup.get('apellidoPaterno')?.touched">
+            {{ getErrorMessage('apellidoPaterno') }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-6 col-xl-4">
+        <mat-form-field>
+          <mat-label>{{ 'nurse.apellidoMaterno' | translate }}</mat-label>
+          <input matInput placeholder="Ej: 13455" formControlName="apellidoMaterno">
+          <mat-error *ngIf="formGroup.get('apellidoMaterno')?.hasError('required') && formGroup.get('apellidoMaterno')?.touched">
+            {{ getErrorMessage('apellidoMaterno') }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>{{ 'nurse.fechaNacimiento' | translate }}</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+            <mat-hint>{{ 'app.dateFormatInput' | translate }}</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>{{ 'nurse.genero' | translate }}</mat-label>
+            <mat-select formControlName="genero" placeholder="{{ 'nurse.genero' | translate }}">
+              <mat-option>{{ 'none' | translate }}</mat-option>
+              @for (genderOption of genderOptions; track genderOption) {
+                <mat-option [value]="genderOption">{{ genderOption | translate }}</mat-option>
+              }
+            </mat-select>
+            <mat-error *ngIf="formGroup.get('genero')?.hasError('required') && formGroup.get('genero')?.touched">
+              {{ getErrorMessage('genero') }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+
+        <div class="col-sm-6 col-xl-4">
+          <!-- <p>Entered value: {{formGroup.valueChanges | async | json}}</p> -->
+          <mat-form-field class="example-full-width">
+            <mat-label>{{ 'telephone' | translate }}</mat-label>
+            <span matTextPrefix>+514 &nbsp;</span>
+            <input type="telephone" matInput placeholder="555-555-1234" formControlName="telephone" required>
+            <mat-icon matSuffix>phone</mat-icon>
+            <!-- <mat-hint>Include area code</mat-hint> -->
+          </mat-form-field>
+        </div>
+
+
+        <div class="col-sm-6 col-xl-4">
+          <mat-form-field>
+            <mat-label>{{ 'nurse.nurseProfessionSpecialities' | translate }}</mat-label>
+            <mat-select formControlName="nurseProfessionSpecialities" required>
+              <mat-option>{{ 'none' | translate }}</mat-option>
+              @for (nurseProfessionSpecialities of professionSpecialityList; track nurseProfessionSpecialities) {
+                <mat-option [value]="nurseProfessionSpecialities">{{nurseProfessionSpecialities.name}}</mat-option>
+              }
+            </mat-select>
+            <mat-error *ngIf="formGroup.get('nurseProfessionSpecialities')?.hasError('required') && formGroup.get('nurseProfessionSpecialities')?.touched">
+              {{ getErrorMessage('nurseProfessionSpecialities') }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+
+
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #contacto let-formGroup="formGroup">
+  <div [formGroup]="formGroup" style="padding: 20px;">
+    <mat-form-field appearance="fill">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="field2" required>
+      <mat-error *ngIf="formGroup.get('field2')?.hasError('required') && formGroup.get('field2')?.touched">
+        El teléfono es requerido.
+      </mat-error>
+      <mat-error *ngIf="formGroup.get('field2')?.hasError('minlength') && formGroup.get('field2')?.touched">
+        El teléfono debe tener al menos 3 caracteres.
+      </mat-error>
+    </mat-form-field>
+  </div>
+</ng-template>
+
+<ng-template #direccion let-formGroup="formGroup">
+  <div [formGroup]="formGroup" style="padding: 20px;">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="field3" required>
+      <mat-error *ngIf="formGroup.get('field3')?.hasError('required') && formGroup.get('field3')?.touched">
+        El email es requerido.
+      </mat-error>
+      <mat-error *ngIf="formGroup.get('field3')?.hasError('email') && formGroup.get('field3')?.touched">
+        El formato del email no es válido.
+      </mat-error>
+    </mat-form-field>
+  </div>
+</ng-template>
+
+
+
+<!--
+<ng-template #miTemplate>
+<mat-card>
   <mat-card-header class="m-b-16">
     <mat-card-title>
        @if (entityId) {
@@ -62,20 +239,26 @@
         <div class="col-sm-6 col-xl-4">
           <mat-form-field>
             <mat-label>{{ 'nurse.genero' | translate }}</mat-label>
-            <input matInput placeholder="Ej: 13455" formControlName="genero">
+            <mat-select formControlName="genero" placeholder="{{ 'nurse.genero' | translate }}">
+              <mat-option>{{ 'none' | translate }}</mat-option>
+              @for (genderOption of genderOptions; track genderOption) {
+                <mat-option [value]="genderOption">{{ genderOption | translate }}</mat-option>
+              }
+            </mat-select>
             @if (getControl('genero')?.invalid && (getControl('genero')?.touched || submitted)) {
               <mat-error>{{ getErrorMessage('genero') }}</mat-error>
             }
           </mat-form-field>
         </div>
 
+
         <div class="col-sm-6 col-xl-4">
           <mat-form-field>
-            <mat-label>{{ 'entity.nurseProfessionSpeciality' | translate }}</mat-label>
-            <mat-select formControlName="nurseProfessionSpeciality" required>
-              <mat-option>None</mat-option>
-              @for (nurseProfessionSpeciality of professionSpecialityList; track nurseProfessionSpeciality) {
-                <mat-option [value]="nurseProfessionSpeciality">{{nurseProfessionSpeciality.name}}</mat-option>
+            <mat-label>{{ 'entity.nurseProfessionSpecialities' | translate }}</mat-label>
+            <mat-select formControlName="nurseProfessionSpecialities" required>
+              <mat-option>{{ 'none' | translate }}</mat-option>
+              @for (nurseProfessionSpecialities of professionSpecialityList; track nurseProfessionSpecialities) {
+                <mat-option [value]="nurseProfessionSpecialities">{{nurseProfessionSpecialities.name}}</mat-option>
               }
             </mat-select>
           </mat-form-field>
@@ -106,3 +289,4 @@
     </form>
   </mat-card-content>
 </mat-card>
+</ng-template> -->

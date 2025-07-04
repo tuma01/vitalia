@@ -191,7 +191,7 @@
     "doctorProfessionSpeciality": "Especialidad Profesional del Médico",
     "departamentoHospital": "Departamento Hospitalario",
     "nurse": "Enfermera",
-    "nurseProfessionSpeciality": "Especialidad Profesional de Enfermería"
+    "nurseProfessionSpecialities": "Especialidad Profesional de Enfermería"
   },
   "common": {
     "close": "Cerrar",
@@ -208,7 +208,8 @@
     "select_all": "Seleccionar Todo",
     "ok": "Aceptar",
     "searchPlaceholder": "Buscar {{entityName}}...",
-    "operations": "Operaciones"
+    "operations": "Operaciones",
+    "refresh": "Actualizar"
   },
   "country": {
     "iso": "Código ISO (2 letras)",
@@ -255,7 +256,12 @@
     "nurseProfessionSpecialities": "Especialidad Profesional",
     "telefono": "Teléfono",
     "celular": "Celular",
-    "genero": "Género"
+    "genero": "Género",
+    "email": "Correo Electrónico"
+  },
+  "nurseProfessionSpecialities": {
+    "name": "Name",
+    "description": "Description"
   },
   "en_us": "Inglés",
   "es_bo": "Español (Bolivia)",
@@ -268,7 +274,7 @@
   "symbol": "Símbolo",
   "gender": "Género",
   "mobile": "Móvil",
-  "tele": "Teléfono",
+  "telephone": "Teléfono",
   "birthday": "Fecha de Nacimiento",
   "city": "Ciudad",
   "address": "Dirección",
@@ -295,5 +301,18 @@
   "register_title": "Solo te tomará unos segundos crear tu cuenta",
   "read_and_agree": "He leído y acepto los términos de servicio",
   "have_an_account": "Ya tienes una cuenta",
-  "restore_defaults": "Restaurar valores predeterminados"
+  "restore_defaults": "Restaurar valores predeterminados",
+  "masculino": "Masculino",
+  "femenino": "Femenino",
+  "desconocido": "Desconocido",
+  "none": "Ninguno",
+  "app": {
+    "title": "Hospital Management System",
+    "subtitle": "Un sistema de gestión hospitalaria completo y fácil de usar",
+    "version": "Versión",
+    "dateFormatInput": "dd/MM/yyyy",
+    "dateFormatMonthYearLabel": "MMM yyyy",
+    "dateFormatDateA11yLabel": "PPP",
+    "dateFormatMonthYearA11yLabel": "MMMM yyyy"
+  }
 }

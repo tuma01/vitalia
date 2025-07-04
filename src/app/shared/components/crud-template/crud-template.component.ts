@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef, AfterViewInit, ViewChild, ElementRef, NgZone, Injector } from '@angular/core';
 import { CrudConfig } from './crud-config';
 
 
@@ -9,13 +9,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MtxGridColumn, MtxGridModule } from '@ng-matero/extensions/grid';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TableConfig } from './crud-config';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 @Component({
   selector: 'app-crud-template',
@@ -32,12 +34,14 @@ import { TableConfig } from './crud-config';
       TranslateModule,
       MatCheckboxModule,
       MatIconModule,
-      MatToolbarModule
+      MatToolbarModule,
+      MatTooltipModule
     ],
   templateUrl: './crud-template.component.html',
   styleUrls: ['./crud-template.component.scss']
 })
 export class CrudTemplateComponent<T> {
+
   @Input() data: T[] = [];
   @Input() filteredData: T[] = [];
   @Input() columns: MtxGridColumn[] = [];
@@ -53,4 +57,6 @@ export class CrudTemplateComponent<T> {
   @Output() sortChange = new EventEmitter<any>();
   // ¡NUEVA PROPIEDAD! Para recibir los TemplateRef
   @Input() cellTemplates: { [key: string]: TemplateRef<any> } = {};
+
+  constructor() { }
 }

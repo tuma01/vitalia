@@ -14,6 +14,7 @@ import { DoctorProfessionSpecialityService } from './services/doctor-profession-
 import { DepartamentoService } from './services/departamento.service';
 import { DepartamentoHospitalService } from './services/departamento-hospital.service';
 import { CountryService } from './services/country.service';
+import { AvatarControllerService } from './services/avatar-controller.service';
 import { AuthenticationService } from './services/authentication.service';
 
 /**
@@ -32,6 +33,7 @@ import { AuthenticationService } from './services/authentication.service';
     DepartamentoService,
     DepartamentoHospitalService,
     CountryService,
+    AvatarControllerService,
     AuthenticationService,
     ApiConfiguration
   ],

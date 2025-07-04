@@ -16,3 +16,11 @@ html {
 .theme-dark {
   color-scheme: dark;
 }
+
+
+:root {
+  @include mat.fab-overrides((
+    container-color: orange,
+    container-elevation-shadow: red,
+  ));
+}
