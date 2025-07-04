@@ -9,6 +9,5 @@ export interface UserRegisterDto {
   id?: number;
   lastName: string;
   password: string;
-  personType: 'ADMIN' | 'DOCTOR' | 'NURSE' | 'PATIENT' | 'USER';
-  roles?: Array<string>;
+  personType: 'ADMIN' | 'NURSE' | 'DOCTOR' | 'PATIENT' | 'EMPLOYEE';
 }

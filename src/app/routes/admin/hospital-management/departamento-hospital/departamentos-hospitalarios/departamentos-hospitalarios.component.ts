@@ -44,7 +44,7 @@ export class DepartamentosHospitalariosComponent extends CrudBaseComponent<Depar
 
     // Dentro de tu componente:
     this.columns = [
-      ...getBaseColumns(this.translate),
+      // ...getBaseColumns(this.translate),
       ...getDepartamentoHospitalColumns(this.translate),
       getOperationColumn(this.translate, {
         editHandler: (record) => this.edit(record),

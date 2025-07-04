@@ -44,8 +44,7 @@ export class RegisterComponent {
     lastName: 'Amachi',
     email: 'juan.amachi@gmail.com',
     password: 'bolivia',
-    personType: 'ADMIN',
-    roles: ['ROLE_SUPER_ADMIN']
+    personType: 'ADMIN'
   };
 
   registerForm = this.fb.nonNullable.group({
@@ -54,8 +53,7 @@ export class RegisterComponent {
     email: ['', [Validators.required, Validators.email]], // Agregué Validators.email
     password: ['', [Validators.required]],
     confirmPassword: ['', [Validators.required]],
-    personType: ['', [Validators.required]],
-    roles: [[''], [Validators.required]] // roles es un array, por lo que se inicia con un array vacio.
+    personType: ['', [Validators.required]]// roles es un array, por lo que se inicia con un array vacio.
   }, { validators: this.matchValidator('password', 'confirmPassword') });
 
   constructor(public translate: TranslateService) {
@@ -65,8 +63,7 @@ export class RegisterComponent {
       email: this.registerRequest.email,
       password: this.registerRequest.password,
       confirmPassword: '',
-      personType: this.registerRequest.personType,
-      roles: this.registerRequest.roles || [],
+      personType: this.registerRequest.personType
     });
   }
   errorMsg: Array<string> = [];

@@ -11,8 +11,10 @@
     [showToolbar]="tableConfig.showToolbar ?? false"
     [toolbarTemplate]="toolbarTemplate"
     [toolbarTitle]="''"
-    [columnHideable]="tableConfig.columnHideable ?? false"
+    [showColumnMenuButton]="true"
+    [columnMenuButtonType]="'icon'"
     [columnSortable]="tableConfig.columnSortable ?? false"
+    [columnMenuButtonIcon]="'view_column'"
     [columnPinnable]="tableConfig.columnPinnable ?? false"
     [expandable]="tableConfig.expandable ?? false"
     [showPaginator]="tableConfig.showPaginator ?? false"
@@ -21,6 +23,7 @@
     (sortChange)="sortChange.emit($event)"
     (selectionChange)="selectChange.emit($event)"
 >
+
     <ng-template #toolbarTemplate>
         <div style="display: flex; align-items: center; gap: 16px; height: 100%;">
             <mat-form-field appearance="outline" class="w-[350px] search-field" style="height: 100%;">
@@ -39,10 +42,19 @@
                 }
             </mat-form-field>
             <div class="spacer"></div>
-            <button mat-raised-button color="primary" (click)="create.emit()">
-                <mat-icon>add</mat-icon>
-                {{ 'add' | translate }} {{ config.translations.entityName | translate }}
+
+            <button mat-icon-button (click)="create.emit()"
+              matTooltip="{{ 'common.add' | translate }} {{ config.translations.entityName | translate }}"
+              matTooltipPosition="above" >
+              <mat-icon>add_circle_outline</mat-icon>
             </button>
+
+            <button mat-icon-button (click)="create.emit()"
+              matTooltip="{{ 'common.refresh' | translate }}"
+              matTooltipPosition="above" >
+              <mat-icon>refresh</mat-icon>
+            </button>
+
         </div>
     </ng-template>
 </mtx-grid>

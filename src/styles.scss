@@ -9,6 +9,28 @@
 
 
 
+
+/* Agrega esto para una prueba global y obvia */
+// body {
+//   background-color: pink !important; /* ¡Queremos ver este rosa chicle! */
+// }
+
+/* ... tus @use y otras reglas CSS existentes ... */
+// Base styles for all badges (mantener esto como está)
+
+
+/* Example: In your styles/custom/_material.scss or directly in styles.scss */
+
+// .grid-tag {
+//   padding: 4px 8px;           // Esencial para darle espacio al fondo
+//   border-radius: 4px;         // Para las esquinas redondeadas
+//   display: inline-block;      // ¡CRÍTICO! Permite que padding y background se apliquen correctamente
+//   white-space: nowrap;        // Evita que el texto del tag se rompa
+//   // font-size: 0.85em;       // Ya confirmaste que esto funciona
+//   // line-height: 1;          // Opcional para alineación vertical
+//   // vertical-align: middle;  // Opcional para alinear en la celda
+// }
+
 // /* ================================================== */
 // /* ELIMINA BORDES, FONDO GRIS Y EFECTOS DE ICONOS */
 // /* ================================================== */

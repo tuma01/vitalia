@@ -6,7 +6,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppDirectionality, LocalStorageService } from '@shared';
 import { enUS, Locale, zhCN, zhTW } from 'date-fns/locale';
 import { es } from 'date-fns/locale';
-// import { esBO } from 'date-fns/locale/es-BO';
 import { BehaviorSubject } from 'rxjs';
 import { AppSettings, AppTheme, defaults } from '../settings';
 
@@ -35,9 +34,9 @@ export class SettingsService {
   options: AppSettings = Object.assign(defaults, this.storedOptions);
 
   // languages = ['en-US', 'zh-CN', 'zh-TW'];
-  languages = ['en-US', 'zh-CN', 'zh-TW', 'es-BO'];
+  languages = ['en-US', 'es-BO'];
 
-  localeMap: Record<string, Locale> = { 'en-US': enUS, 'zh-CN': zhCN, 'zh-TW': zhTW, 'es-BO': es };
+  localeMap: Record<string, Locale> = { 'en-US': enUS, 'es-BO': es };
 
   constructor() {
     this.translate.addLangs(this.languages);

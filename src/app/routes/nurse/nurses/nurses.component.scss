@@ -1,0 +1,39 @@
+// ::ng-deep .foreign-table {
+//   background-color: #818181;
+// }
+
+// Base styles for all badges
+.badge {
+  display: inline-block; // Essential for padding and background to work on a span
+  padding: 0.25em 0.6em; // Adjust padding to your desired badge size
+  font-size: 0.75em;     // Smaller font for badges
+  font-weight: 700;      // Bold text
+  line-height: 1;        // Consistent line height
+  text-align: center;
+  white-space: nowrap;   // Prevent wrapping
+  vertical-align: baseline; // Align with text baseline
+  border-radius: 0.375rem; // Rounded corners for badge shape
+}
+
+// Solid color variations for badges
+.badge-solid-red {
+  color: #fff; // White text for good contrast
+  background-color: #dc3545; // A standard red (you can use your M3 red: #B71C1C)
+}
+
+.badge-solid-green {
+  color: #fff;
+  background-color: #28a745; // A standard green (you can use your M3 green: #33691E)
+}
+
+.badge-solid-blue {
+  color: #fff;
+  background-color: #007bff; // A standard blue (you can use your M3 blue: #1A237E)
+}
+
+.badge-solid-gray { // For your 'DESCONOCIDO' fallback or general use
+  color: #fff;
+  background-color: #6c757d; // A standard gray
+}
+
+

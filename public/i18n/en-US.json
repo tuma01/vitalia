@@ -208,7 +208,8 @@
     "select_all": "Select All",
     "ok": "Ok",
     "searchPlaceholder": "Search {{entityName}}...",
-    "operations": "Operations"
+    "operations": "Operations",
+    "refresh": "Refresh"
   },
   "country": {
     "iso": "ISO Code (2 letters)",
@@ -255,7 +256,12 @@
     "nurseProfessionSpecialities": "Profession Specialties",
     "telefono": "Telephone",
     "celular": "Mobile",
-    "genero": "Género"
+    "genero": "Género",
+    "email": "Email"
+  },
+  "nurseProfessionSpecialities": {
+    "name": "Name",
+    "description": "Description"
   },
   "en_us": "English",
   "es_bo": "Español (Bolivia)",
@@ -268,7 +274,7 @@
   "symbol": "Symbol",
   "gender": "Gender",
   "mobile": "Mobile",
-  "tele": "Telephone",
+  "telephone": "Telephone",
   "birthday": "Birthday",
   "city": "City",
   "address": "Address",
@@ -295,5 +301,18 @@
   "register_title": "It only takes a few seconds to create your account",
   "read_and_agree": "I have read and agree to the terms of service",
   "have_an_account": "Already have an account",
-  "restore_defaults": "Restore defaults"
+  "restore_defaults": "Restore defaults",
+  "masculino": "Male",
+  "femenino": "Female",
+  "desconocido": "Unknown",
+  "none": "None",
+  "app": {
+    "title": "Hospital Management System",
+    "subtitle": "A complete solution for hospital management",
+    "version": "Version",
+    "dateFormatInput": "MM/dd/yyyy",
+    "dateFormatMonthYearLabel": "MMM yyyy",
+    "dateFormatDateA11yLabel": "PPP",
+    "dateFormatMonthYearA11yLabel": "MMMM yyyy"
+  }
 }

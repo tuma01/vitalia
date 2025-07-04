@@ -2,8 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "title": "OpenAPI specification - vitalia-app",
-    "description": "This API exposes endpoints to manage Vitalia App",
-    "termsOfService": "https://www.vitalia.com/terms",
+    "description": "This API exposes endpoints to manage vitalia-app",
+    "termsOfService": "https://www.amachi.com/terms",
     "contact": {
       "name": "Juan Amachi",
       "url": "https://www.amachi.com",
@@ -11,7 +11,7 @@
     },
     "license": {
       "name": "MIT License",
-      "url": "https://www.vitalia.com/license"
+      "url": "https://www.amachi.com/license"
     },
     "version": "1.0"
   },
@@ -2260,6 +2260,67 @@
         }
       }
     },
+    "/avatar": {
+      "get": {
+        "tags": [
+          "avatar-controller"
+        ],
+        "operationId": "getOwnAvatar",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "byte"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "avatar-controller"
+        ],
+        "operationId": "uploadAvatar",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "file"
+                ],
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "avatar-controller"
+        ],
+        "operationId": "deleteAvatar",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/auth/register": {
       "post": {
         "tags": [
@@ -2617,6 +2678,37 @@
         }
       }
     },
+    "/avatar/email": {
+      "get": {
+        "tags": [
+          "avatar-controller"
+        ],
+        "operationId": "getAvatarByEmail",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "byte"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/activate-account": {
       "get": {
         "tags": [
@@ -2855,10 +2947,10 @@
             "type": "string",
             "enum": [
               "ADMIN",
-              "DOCTOR",
               "NURSE",
+              "DOCTOR",
               "PATIENT",
-              "USER"
+              "EMPLOYEE"
             ]
           },
           "nombre": {
@@ -2885,24 +2977,6 @@
             "type": "string",
             "description": "Nombre Completo de la Persona",
             "example": "Jose Larico"
-          },
-          "diaNacimiento": {
-            "type": "integer",
-            "description": "El dia de nacimiento de la Persona",
-            "format": "int32",
-            "example": 24
-          },
-          "mesNacimiento": {
-            "type": "integer",
-            "description": "El mes de nacimiento de la Persona",
-            "format": "int32",
-            "example": 6
-          },
-          "anoNacimiento": {
-            "type": "integer",
-            "description": "El ano de nacimiento de la Persona",
-            "format": "int32",
-            "example": 2000
           },
           "fechaNacimiento": {
             "type": "string",
@@ -3113,18 +3187,11 @@
             "type": "string",
             "enum": [
               "ADMIN",
-              "DOCTOR",
               "NURSE",
+              "DOCTOR",
               "PATIENT",
-              "USER"
+              "EMPLOYEE"
             ]
-          },
-          "roles": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "avatar": {
             "type": "string",

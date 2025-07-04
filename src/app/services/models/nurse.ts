@@ -12,11 +12,6 @@ export interface Nurse {
   address?: Address;
 
   /**
-   * El ano de nacimiento de la Persona
-   */
-  anoNacimiento?: number;
-
-  /**
    * Apellido Materno de la Persona
    */
   apellidoMaterno?: string;
@@ -30,11 +25,6 @@ export interface Nurse {
    * Celular de la Persona
    */
   celular?: string;
-
-  /**
-   * El dia de nacimiento de la Persona
-   */
-  diaNacimiento?: number;
   estadoCivil?: 'SOLTERO' | 'CASADO' | 'UNION_LIBRE' | 'SEPARADO' | 'DIVORCIADO' | 'VIUDO';
 
   /**
@@ -54,11 +44,6 @@ export interface Nurse {
   idCard?: string;
 
   /**
-   * El mes de nacimiento de la Persona
-   */
-  mesNacimiento?: number;
-
-  /**
    * Nombre de la Persona
    */
   nombre: string;
@@ -72,7 +57,7 @@ export interface Nurse {
    * The Specialities of Nurses
    */
   nurseProfessionSpecialities?: Array<NurseProfessionSpeciality>;
-  personType?: 'ADMIN' | 'DOCTOR' | 'NURSE' | 'PATIENT' | 'USER';
+  personType?: 'ADMIN' | 'NURSE' | 'DOCTOR' | 'PATIENT' | 'EMPLOYEE';
 
   /**
    * Photo of Nurses

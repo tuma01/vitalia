@@ -46,7 +46,7 @@ export class NursesComponent extends CrudBaseComponent<Nurse> {
 
     // Dentro de tu componente:
     this.columns = [
-      ...getBaseColumns(this.translate),
+      // ...getBaseColumns(this.translate), // no es necesario si ya tienes las columnas específicas
       ...getNurseColumns(this.translate),
       getOperationColumn(this.translate, {
         editHandler: (record) => this.edit(record),
